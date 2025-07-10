@@ -1,0 +1,133 @@
+/* Reset & base */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", "Noto Sans", sans-serif;
+  background-color: #0f172a; /* navy gelap */
+  color: #e0e7ff; /* biru muda terang */
+  line-height: 1.5;
+}
+
+/* Header */
+header {
+  background-color: #1e293b;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+}
+
+#searchBtn {
+  background: none;
+  border: none;
+  color: #38abf8;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+#searchBtn:hover {
+  color: #60a5fa;
+}
+
+#searchInput {
+  position: absolute;
+  right: 4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200px;
+  padding: 0.4rem 0.75rem;
+  border: none;
+  border-radius: 0.4rem;
+  background-color: #1e293b;
+  color: #e0e7ff;
+  font-size: 1rem;
+  box-shadow: 0 0 6px #38bdf8aa;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+#searchInput.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Main content */
+main {
+  max-width: 600px;
+  margin: 4rem auto 3rem;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+  color: #38bdf8;
+  text-shadow: 0 0 8px #38bdf8aa;
+}
+
+p {
+  color: #94a3b8;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.order-btn {
+  background-color: #38bdf8;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 0.6rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 12px #0ea5e9cc;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.order-btn:hover {
+  background-color: #0ea5e9;
+  box-shadow: 0 6px 16px #38bdf8cc;
+}
+
+/* Footer navigation */
+footer {
+  background-color: #1e293b;
+  padding: 1rem 0;
+}
+
+footer nav {
+  display: flex;
+  justify-content: space-around;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+footer nav a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  transition: color 0.3s ease;
+}
+
+footer nav a.active,
+footer nav a:hover {
+  color: #38bdf8;
+}
+
+footer nav a svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Account - Laundry Gesit</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+      body {
+        font-family: "Inter", "Noto Sans", sans-serif;
+        background-color: #1e3a8a; /* navy */
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen flex flex-col justify-center items-center p-6 bg-[#1e3a8a]"
+  >
+    <div class="w-full max-w-md bg-[#a5b8ff] rounded-xl shadow-lg p-6">
+      <h2 class="text-2xl font-bold text-[#1e3a8a] mb-6 text-center">
+        Akun Saya
+      </h2>
+
+      <form class="space-y-4">
+        <div>
+          <label for="fullname" class="block text-[#1e3a8a] font-semibold mb-1"
+            >Nama Lengkap</label
+          >
+          <input
+            id="fullname"
+            type="text"
+            placeholder="Masukkan nama lengkap"
+            class="w-full rounded-md border border-[#1e3a8a] px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3b82f6]"
+          />
+        </div>
+
+        <div>
+          <label for="email" class="block text-[#1e3a8a] font-semibold mb-1"
+            >Email</label
+          >
+          <input
+            id="email"
+            type="email"
+            placeholder="email@domain.com"
+            class="w-full rounded-md border border-[#1e3a8a] px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3b82f6]"
+          />
+        </div>
+
+        <div>
+          <label for="phone" class="block text-[#1e3a8a] font-semibold mb-1"
+            >Nomor Telepon</label
+          >
+          <input
+            id="phone"
+            type="tel"
+            placeholder="08123456789"
+            class="w-full rounded-md border border-[#1e3a8a] px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3b82f6]"
+          />
+        </div>
+
+        <div>
+          <label for="password" class="block text-[#1e3a8a] font-semibold mb-1"
+            >Password</label
+          >
+          <input
+            id="password"
+            type="password"
+            placeholder="••••••••"
+            class="w-full rounded-md border border-[#1e3a8a] px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3b82f6]"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-[#3b82f6] text-white font-bold py-2 rounded-md hover:bg-[#2563eb] transition"
+        >
+          Simpan Perubahan
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

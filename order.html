@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Order Laundry - Laundry Gesit</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="bg-[#1e3a8a] font-sans min-h-screen flex items-center justify-center p-4"
+  >
+    <main
+      class="bg-[#2563eb] rounded-xl max-w-lg w-full p-8 shadow-lg text-white"
+    >
+      <h1 class="text-3xl font-bold mb-6 text-center">
+        Form Pemesanan Laundry
+      </h1>
+
+      <form id="orderForm" class="space-y-6" autocomplete="off">
+        <!-- Nama Pelanggan -->
+        <div>
+          <label for="name" class="block text-sm font-semibold mb-1"
+            >Nama Lengkap</label
+          >
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            placeholder="Masukkan nama lengkap"
+            class="w-full rounded-md border border-transparent px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#60a5fa]"
+          />
+        </div>
+
+        <!-- Alamat -->
+        <div>
+          <label for="address" class="block text-sm font-semibold mb-1"
+            >Alamat</label
+          >
+          <textarea
+            id="address"
+            name="address"
+            rows="3"
+            required
+            placeholder="Masukkan alamat lengkap"
+            class="w-full rounded-md border border-transparent px-4 py-2 text-gray-900 resize-none focus:outline-none focus:ring-2 focus:ring-[#60a5fa]"
+          ></textarea>
+        </div>
+
+        <!-- Nomor Telepon -->
+        <div>
+          <label for="phone" class="block text-sm font-semibold mb-1"
+            >Nomor Telepon</label
+          >
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            required
+            placeholder="0812xxxxxxx"
+            pattern="[0-9]{10,15}"
+            class="w-full rounded-md border border-transparent px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#60a5fa]"
+          />
+          <small class="text-xs text-[#a5c8ff]"
+            >*Masukkan nomor telepon yang valid (10-15 digit)</small
+          >
+        </div>
+
+        <!-- Jenis Layanan -->
+        <div>
+          <label for="service" class="block text-sm font-semibold mb-1"
+            >Jenis Layanan</label
+          >
+          <select
+            id="service"
+            name="service"
+            required
+            class="w-full rounded-md border border-transparent px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#60a5fa]"
+          >
+            <option value="" disabled selected>Pilih layanan</option>
+            <option value="cuci_biasa">Cuci Biasa</option>
+            <option value="cuci_express">Cuci Express</option>
+            <option value="setrika">Setrika Saja</option>
+            <option value="cuci_dan_setrika">Cuci & Setrika</option>
+          </select>
+        </div>
+
+        <!-- Berat Pakaian -->
+        <div>
+          <label for="weight" class="block text-sm font-semibold mb-1"
+            >Berat Pakaian (kg)</label
+          >
+          <input
+            type="number"
+            id="weight"
+            name="weight"
+            required
+            min="1"
+            max="100"
+            placeholder="Masukkan berat pakaian"
+            class="w-full rounded-md border border-transparent px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#60a5fa]"
+          />
+        </div>
+
+        <!-- Waktu Pengambilan -->
+        <div>
+          <label for="pickup_time" class="block text-sm font-semibold mb-1"
+            >Waktu Pengambilan</label
+          >
+          <input
+            type="datetime-local"
+            id="pickup_time"
+            name="pickup_time"
+            required
+            class="w-full rounded-md border border-transparent px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#60a5fa]"
+          />
+        </div>
+
+        <!-- Catatan Tambahan -->
+        <div>
+          <label for="notes" class="block text-sm font-semibold mb-1"
+            >Catatan Tambahan (opsional)</label
+          >
+          <textarea
+            id="notes"
+            name="notes"
+            rows="2"
+            placeholder="Misal: Pisahkan pakaian putih dan warna"
+            class="w-full rounded-md border border-transparent px-4 py-2 text-gray-900 resize-none focus:outline-none focus:ring-2 focus:ring-[#60a5fa]"
+          ></textarea>
+        </div>
+
+        <!-- Tombol Submit -->
+        <button
+          type="submit"
+          class="w-full bg-[#60a5fa] hover:bg-[#3b82f6] font-semibold py-3 rounded-lg transition-colors duration-300"
+        >
+          Pesan Sekarang
+        </button>
+      </form>
+    </main>
+
+    <script>
+      document
+        .getElementById("orderForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Ambil data form
+          const formData = new FormData(this);
+          const data = Object.fromEntries(formData.entries());
+
+          // Validasi sederhana
+          if (
+            !data.name.trim() ||
+            !data.address.trim() ||
+            !data.phone.match(/^[0-9]{10,15}$/) ||
+            !data.service ||
+            !data.weight ||
+            !data.pickup_time
+          ) {
+            alert("Mohon isi semua data dengan benar.");
+            return;
+          }
+
+          alert(
+            `Terima kasih, ${data.name}! Pesanan Anda telah diterima.\n` +
+              `Layanan: ${data.service}\n` +
+              `Berat: ${data.weight} kg\n` +
+              `Pengambilan: ${new Date(data.pickup_time).toLocaleString()}`
+          );
+
+          this.reset();
+        });
+    </script>
+  </body>
+</html>
