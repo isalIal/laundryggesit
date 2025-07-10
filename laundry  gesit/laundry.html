@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Laundry Gesit</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Noto+Sans:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+      body {
+        font-family: "Inter", "Noto Sans", sans-serif;
+        background-color: #1e3a8a;
+      }
+      .admin-panel {
+        display: none;
+      }
+      .input-light {
+        background-color: #1e3a8a;
+        color: white;
+        border: 1px solid #3b82f6;
+      }
+      .input-light::placeholder {
+        color: #a5c8ff;
+        opacity: 1;
+      }
+      .message-customer {
+        background-color: #1e40af;
+        color: white;
+        border-radius: 1rem 1rem 1rem 0;
+      }
+      .message-admin {
+        background-color: #152849;
+        color: white;
+        border-radius: 1rem 1rem 0 1rem;
+      }
+    </style>
+  </head>
+  <body
+    class="relative flex min-h-screen flex-col justify-between bg-[#1e3a8a] font-sans overflow-x-hidden text-white"
+  >
+    <!-- Header -->
+    <header
+      class="flex items-center justify-between bg-[#1e3a8a] p-4 pb-2 relative"
+    >
+      <div class="flex items-center gap-2">
+        <img
+          src="https://img.icons8.com/color/48/washing-machine.png"
+          alt="Logo Mesin Cuci"
+          class="h-10 w-10"
+        />
+        <span class="font-bold text-lg">Laundry Gesit</span>
+      </div>
+      <button
+        id="searchBtn"
+        class="flex items-center justify-center h-12 w-12 rounded-xl bg-transparent text-white cursor-pointer"
+        aria-label="Search"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="currentColor"
+          viewBox="0 0 256 256"
+        >
+          <path
+            d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
+          ></path>
+        </svg>
+      </button>
+      <input
+        id="searchInput"
+        type="text"
+        placeholder="Cari sesuatu..."
+        class="absolute right-16 top-1/2 transform -translate-y-1/2 rounded-md border border-white bg-[#1e3a8a] text-white px-3 py-1 hidden input-light"
+      />
+    </header>
+
+    <!-- Konten Utama -->
+    <main class="flex-grow">
+      <!-- Halaman Home (default) -->
+      <div id="homePage">
+        <section class="container mx-auto px-4 py-4">
+          <div
+            class="w-full min-h-[218px] rounded-xl bg-center bg-no-repeat bg-cover"
+            style="
+              background-image: url('https://cdn.usegalileo.ai/sdxl10/060ee0e2-9103-4e91-b8ed-fc70c5560819.png');
+            "
+          ></div>
+          <h1 class="mt-6 text-2xl font-bold tracking-tight leading-tight">
+            Kebersihan Adalah Sebagian dari Iman
+          </h1>
+          <p class="text-[#a5c8ff] mt-2 text-base leading-relaxed">
+            Pakaian Anda, Prioritas Kami! Cuci Kilat, Hasil Nikmat!
+          </p>
+          <div class="flex justify-center mt-5">
+            <button
+              id="orderBtn"
+              class="min-w-[84px] max-w-[480px] bg-[#60a5fa] hover:bg-[#2563eb] text-white font-bold rounded-xl h-10 px-4"
+            >
+              Order Now
+            </button>
+          </div>
+          <h3 class="font-bold text-lg mt-8 mb-2">Special Diskon</h3>
+          <div class="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+            <div
+              class="min-w-[150px] flex flex-col gap-3 rounded-lg bg-[#2563eb] p-3 discount-code"
+              data-code="DISKON30"
+              title="Klik untuk salin kode promo"
+            >
+              <div
+                class="aspect-square rounded-xl bg-center bg-no-repeat bg-cover"
+                style="
+                  background-image: url('https://cdn.usegalileo.ai/sdxl10/4805fc7d-e696-4833-ba4f-77d8c0a7adee.png');
+                "
+              ></div>
+              <p class="font-medium text-base">
+                Diskon 30% untuk pesanan pertama anda
+              </p>
+            </div>
+            <div
+              class="min-w-[150px] flex flex-col gap-3 rounded-lg bg-[#2563eb] p-3 discount-code"
+              data-code="DAFTARGRATIS"
+              title="Klik untuk salin kode promo"
+            >
+              <div
+                class="aspect-square rounded-xl bg-center bg-no-repeat bg-cover"
+                style="
+                  background-image: url('https://cdn.usegalileo.ai/sdxl10/7a616c5f-b50e-491b-ad03-0df6010e16b5.png');
+                "
+              ></div>
+              <p class="font-medium text-base">
+                Daftar gratis! dan nikmati promonya
+              </p>
+            </div>
+            <div
+              class="min-w-[150px] flex flex-col gap-3 rounded-lg bg-[#2563eb] p-3 discount-code"
+              data-code="CUCI KILAT"
+              title="Klik untuk salin kode promo"
+            >
+              <div
+                class="aspect-square rounded-xl bg-center bg-no-repeat bg-cover"
+                style="
+                  background-image: url('https://cdn.usegalileo.ai/sdxl10/d758fd55-31de-4d70-abc1-b6c565b7e76c.png');
+                "
+              ></div>
+              <p class="font-medium text-base">
+                Diskon 15% dengan code CUCI KILAT
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Halaman Account (hidden by default) -->
+      <div
+        id="accountPage"
+        class="hidden flex-grow flex items-center justify-center p-6"
+      >
+        <div class="w-full max-w-md bg-[#a5b8ff] rounded-xl shadow-lg p-6">
+          <h2 class="text-2xl font-bold text-[#1e3a8a] mb-6 text-center">
+            Akun Saya
+          </h2>
+
+          <form id="accountForm" class="space-y-4">
+            <div>
+              <label
+                for="fullname"
+                class="block text-[#1e3a8a] font-semibold mb-1"
+                >Nama Lengkap</label
+              >
+              <input
+                id="fullname"
+                type="text"
+                placeholder="Masukkan nama lengkap"
+                class="w-full rounded-md border border-[#1e3a8a] px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3b82f6]"
+              />
+            </div>
+
+            <div>
+              <label for="email" class="block text-[#1e3a8a] font-semibold mb-1"
+                >Email</label
+              >
+              <input
+                id="email"
+                type="email"
+                placeholder="email@domain.com"
+                class="w-full rounded-md border border-[#1e3a8a] px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3b82f6]"
+              />
+            </div>
+
+            <div>
+              <label for="phone" class="block text-[#1e3a8a] font-semibold mb-1"
+                >Nomor Telepon</label
+              >
+              <input
+                id="phone"
+                type="tel"
+                placeholder="08123456789"
+                class="w-full rounded-md border border-[#1e3a8a] px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3b82f6]"
+              />
+            </div>
+
+            <div>
+              <label
+                for="password"
+                class="block text-[#1e3a8a] font-semibold mb-1"
+                >Password</label
+              >
+              <input
+                id="password"
+                type="password"
+                placeholder="••••••••"
+                class="w-full rounded-md border border-[#1e3a8a] px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3b82f6]"
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-[#3b82f6] text-white font-bold py-2 rounded-md hover:bg-[#2563eb] transition"
+            >
+              Simpan Perubahan
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Halaman Admin (hidden by default) -->
+      <div id="adminPage" class="hidden">
+        <div class="container mx-auto px-4 py-6">
+          <div class="flex justify-between items-center mb-6">
+            <h1 class="text-2xl font-bold">Dashboard Admin</h1>
+            <button
+              onclick="logoutAdmin()"
+              class="bg-red-500 px-4 py-1 rounded text-white hover:bg-red-600 text-sm"
+            >
+              Logout
+            </button>
+          </div>
+
+          <!-- Stats Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="bg-[#152849] rounded-xl p-4 shadow">
+              <h2 class="text-lg font-semibold mb-2">Total Pesanan</h2>
+              <p class="text-3xl font-bold">24</p>
+              <p class="text-sm text-[#a5c8ff]">+2 dari kemarin</p>
+            </div>
+            <div class="bg-[#152849] rounded-xl p-4 shadow">
+              <h2 class="text-lg font-semibold mb-2">Pesanan Hari Ini</h2>
+              <p class="text-3xl font-bold">5</p>
+              <p class="text-sm text-[#a5c8ff]">+1 dari kemarin</p>
+            </div>
+            <div class="bg-[#152849] rounded-xl p-4 shadow">
+              <h2 class="text-lg font-semibold mb-2">Pendapatan</h2>
+              <p class="text-3xl font-bold">Rp 20.240.000</p>
+              <p class="text-sm text-[#a5c8ff]">+15% dari minggu lalu</p>
+            </div>
+          </div>
+
+          <!-- Recent Orders -->
+          <div class="bg-[#152849] rounded-xl p-4 shadow mb-6">
+            <h2 class="text-lg font-semibold mb-4">Pesanan Terbaru</h2>
+            <div class="overflow-x-auto">
+              <table class="min-w-full">
+                <thead>
+                  <tr class="text-left border-b border-[#1e40af]">
+                    <th class="pb-2 text-[#a5c8ff]">ID Pesanan</th>
+                    <th class="pb-2 text-[#a5c8ff]">Nama Pelanggan</th>
+                    <th class="pb-2 text-[#a5c8ff]">Tanggal</th>
+                    <th class="pb-2 text-[#a5c8ff]">Status</th>
+                    <th class="pb-2 text-[#a5c8ff]">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b border-[#1e40af]">
+                    <td class="py-3">#LG-1001</td>
+                    <td>machyanut tuko</td>
+                    <td>20 Jun 2023</td>
+                    <td>
+                      <span
+                        class="bg-yellow-500 text-white px-2 py-1 rounded text-xs"
+                        >Diproses</span
+                      >
+                    </td>
+                    <td>
+                      <button
+                        class="text-[#60a5fa] hover:text-[#3b82f6] text-sm"
+                      >
+                        Detail
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Chat Section -->
+          <div class="bg-[#152849] rounded-xl p-4 shadow">
+            <h2 class="text-lg font-semibold mb-4">Chat Pelanggan</h2>
+            <div
+              id="adminChatMessages"
+              class="space-y-3 mb-4"
+              style="max-height: 300px; overflow-y: auto"
+            >
+              <div class="flex">
+                <div class="message-customer px-4 py-2 max-w-xs">
+                  <p class="font-medium">Budi Santoso</p>
+                  <p>Pak, baju saya sudah bisa diambil?</p>
+                  <p class="text-xs text-[#a5c8ff] text-right mt-1">10:30</p>
+                </div>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <input
+                type="text"
+                id="adminChatInput"
+                placeholder="Ketik pesan..."
+                class="flex-grow px-3 py-2 rounded-md input-light"
+              />
+              <button
+                onclick="sendAdminMessage()"
+                class="bg-[#2563eb] hover:bg-[#1e40af] px-4 py-2 rounded"
+              >
+                Kirim
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Floating Admin & Chat Buttons -->
+    <div class="fixed bottom-20 right-4 z-50 flex flex-col gap-3">
+      <button
+        id="chatToggle"
+        class="fixed bottom-4 right-4 bg-[#2563eb] text-white p-3 rounded-full shadow-lg hover:bg-[#1e40af] z-50"
+      >
+        💬
+      </button>
+      <button
+        id="adminToggle"
+        class="rounded-full bg-[#2563eb] p-3 shadow-lg text-white hover:bg-[#1e40af]"
+        aria-label="Admin Panel"
+        title="Admin Panel"
+      >
+        ⚙️
+      </button>
+    </div>
+
+    <!-- Modal Login Admin -->
+    <div
+      id="adminLoginModal"
+      class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center"
+    >
+      <div class="bg-white rounded-xl p-6 w-80 shadow-xl text-gray-800">
+        <h2 class="text-lg font-bold mb-4">Login Admin</h2>
+        <form id="adminLoginForm" class="flex flex-col gap-4">
+          <div>
+            <label for="adminUsername" class="block text-sm font-medium"
+              >Username</label
+            >
+            <input
+              type="text"
+              id="adminUsername"
+              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#2563eb] focus:ring-[#2563eb] sm:text-sm"
+            />
+          </div>
+          <div>
+            <label for="adminPassword" class="block text-sm font-medium"
+              >Password</label
+            >
+            <input
+              type="password"
+              id="adminPassword"
+              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#2563eb] focus:ring-[#2563eb] sm:text-sm"
+            />
+          </div>
+          <div class="flex justify-end">
+            <button
+              type="button"
+              id="cancelAdminLogin"
+              class="mr-2 px-3 py-1 text-sm text-gray-600 hover:text-gray-900"
+            >
+              Batal
+            </button>
+            <button
+              type="submit"
+              class="bg-[#2563eb] hover:bg-[#1e40af] text-white px-4 py-1 rounded text-sm"
+            >
+              Login
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#152849] border-t border-[#1e40af] px-4 py-3">
+      <nav class="flex justify-between">
+        <a
+          href="#"
+          id="navHome"
+          class="flex flex-col items-center gap-1 text-[#a5c8ff]"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+            viewBox="0 0 256 256"
+          >
+            <path
+              d="M224,115.55V208a16,16,0,0,1-16,16H168a16,16,0,0,1-16-16V168a8,8,0,0,0-8-8H112a8,8,0,0,0-8,8v40a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V115.55a16,16,0,0,1,5.17-11.78l80-75.48a16,16,0,0,1,21.53,0l80,75.48A16,16,0,0,1,224,115.55Z"
+            ></path>
+          </svg>
+          <span class="text-xs font-medium">Home</span>
+        </a>
+        <a
+          href="order.html"
+          class="flex flex-col items-center gap-1 text-[#a5c8ff]"
+          id="navOrder"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+            viewBox="0 0 256 256"
+          >
+            <path
+              d="M72,104a8,8,0,0,1,8-8h96a8,8,0,0,1,0,16H80A8,8,0,0,1,72,104Zm8,40h96a8,8,0,0,0,0-16H80a8,8,0,0,0,0,16ZM232,56V208a8,8,0,0,1-11.58,7.15L192,200.94l-28.42,14.21a8,8,0,0,1-7.16,0L128,200.94,99.58,215.15a8,8,0,0,1-7.16,0L64,200.94,35.58,215.15A8,8,0,0,1,24,208V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56Z"
+            ></path>
+          </svg>
+          <span class="text-xs font-medium">Orders</span>
+        </a>
+        <a
+          href="#"
+          id="navAccount"
+          class="flex flex-col items-center gap-1 text-[#a5c8ff]"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+            viewBox="0 0 256 256"
+          >
+            <path
+              d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM74.08,163.8c.11-11.67,20.51-18.93,53.92-18.93s53.72,7.35,53.92,18.93v6.45a7.55,7.55,0,0,1-7.5,7.3H81.57a7.55,7.55,0,0,1-7.49-7.3ZM128,56a28,28,0,1,1-28,28A28,28,0,0,1,128,56Z"
+            ></path>
+          </svg>
+          <span class="text-xs font-medium">Account</span>
+        </a>
+      </nav>
+    </footer>
+    <!-- Floating Chat Box -->
+    <div
+      id="customerChatBox"
+      class="fixed bottom-24 right-4 w-72 bg-[#152849] rounded-xl shadow-lg hidden z-50"
+    >
+      <div class="p-4">
+        <div id="chatMessages" class="space-y-2 max-h-48 overflow-y-auto mb-2">
+          <div class="message-customer px-4 py-2 max-w-xs">
+            <p>Selamat datang di Laundry Gesit! Ada yang bisa kami bantu?</p>
+            <p class="text-xs text-[#a5c8ff] text-right mt-1">08:00</p>
+          </div>
+        </div>
+        <div class="flex gap-2">
+          <input
+            type="text"
+            id="chatInput"
+            placeholder="Ketik pesan..."
+            class="flex-grow px-3 py-2 rounded-md input-light"
+          />
+          <button
+            id="sendChatBtn"
+            class="bg-[#2563eb] hover:bg-[#1e40af] px-3 py-2 rounded text-sm"
+          >
+            Kirim
+          </button>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Fungsi untuk toggle halaman
+        function showPage(pageId) {
+          document.getElementById("homePage").classList.add("hidden");
+          document.getElementById("accountPage").classList.add("hidden");
+          document.getElementById("adminPage").classList.add("hidden");
+          document.getElementById(pageId).classList.remove("hidden");
+        }
+
+        // Navigasi footer
+        document
+          .getElementById("navHome")
+          .addEventListener("click", function (e) {
+            e.preventDefault();
+            showPage("homePage");
+          });
+
+        document
+          .getElementById("navAccount")
+          .addEventListener("click", function (e) {
+            e.preventDefault();
+            showPage("accountPage");
+          });
+
+        // Form account submit
+        document
+          .getElementById("accountForm")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+            showPage("homePage");
+          });
+
+        // Fungsi untuk admin
+        const adminBtn = document.getElementById("adminToggle");
+        const modal = document.getElementById("adminLoginModal");
+        const cancelBtn = document.getElementById("cancelAdminLogin");
+        const loginForm = document.getElementById("adminLoginForm");
+
+        adminBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          const isLoggedIn = localStorage.getItem("isAdminLoggedIn") === "true";
+          if (isLoggedIn) {
+            showPage("adminPage");
+          } else {
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+          }
+        });
+
+        cancelBtn.addEventListener("click", function () {
+          modal.classList.add("hidden");
+        });
+
+        loginForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          // Login dengan credential apa saja
+          localStorage.setItem("isAdminLoggedIn", "true");
+          modal.classList.add("hidden");
+          showPage("adminPage");
+        });
+
+        function logoutAdmin() {
+          localStorage.removeItem("isAdminLoggedIn");
+          showPage("homePage");
+        }
+
+        function sendAdminMessage() {
+          const input = document.getElementById("adminChatInput");
+          if (input.value.trim()) {
+            const chatDiv = document.createElement("div");
+            chatDiv.className = "flex justify-end";
+            chatDiv.innerHTML = `
+              <div class="message-admin px-4 py-2 max-w-xs">
+                <p>${input.value}</p>
+                <p class="text-xs text-[#a5c8ff] text-right mt-1">${new Date().toLocaleTimeString(
+                  [],
+                  { hour: "2-digit", minute: "2-digit" }
+                )}</p>
+              </div>
+            `;
+            document.getElementById("adminChatMessages").appendChild(chatDiv);
+            input.value = "";
+            document.getElementById("adminChatMessages").scrollTop =
+              document.getElementById("adminChatMessages").scrollHeight;
+          }
+        }
+
+        // Fungsi lainnya
+        const orderButton = document.getElementById("orderBtn");
+        if (orderButton) {
+          orderButton.addEventListener("click", () => {
+            window.location.href = "order.html";
+          });
+        }
+
+        const searchBtn = document.getElementById("searchBtn");
+        const searchInput = document.getElementById("searchInput");
+        searchBtn.addEventListener("click", () => {
+          searchInput.classList.toggle("hidden");
+          searchInput.focus();
+        });
+
+        searchInput.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            searchInput.classList.add("hidden");
+          }
+        });
+
+        const discountCards = document.querySelectorAll(".discount-code");
+        discountCards.forEach((card) => {
+          card.addEventListener("click", function () {
+            const code = this.getAttribute("data-code");
+            if (code) {
+              navigator.clipboard.writeText(code).then(() => {
+                alert(`Kode promo "${code}" disalin ke clipboard!`);
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
